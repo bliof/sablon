@@ -24,7 +24,6 @@ class HTMLConverterASTBuilderTest < Sablon::TestCase
 
   def test_validate_structure
     @builder = new_builder
-    root = Sablon::Configuration.instance.permitted_html_tags['#document-fragment'.to_sym]
     div = Sablon::Configuration.instance.permitted_html_tags[:div]
     span = Sablon::Configuration.instance.permitted_html_tags[:span]
     # test valid relationship
