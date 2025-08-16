@@ -86,7 +86,7 @@ module Sablon
           @ast_class = value
           return
         else
-          value = value.to_s
+          value = value.to_s.dup
         end
         # camel case the word and get class, similar logic to
         # ActiveSupport::Inflector.constantize but refactored to be specific
