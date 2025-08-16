@@ -53,7 +53,13 @@ module Sablon
 
     def render(context, properties = {})
       # initialize environment
-      @document = Sablon::DOM::Model.new(Zip::File.open(@path, !File.exist?(@path)))
+      @document = Sablon::DOM::Model.new(
+        if defined?(Zip::VERSION) && Gem::Version.new(Zip::VERSION) >= Gem::Version.new('3.0.0')
+          Zip::File.open(@path, create: !File.exist?(@path))
+        else
+          Zip::File.open(@path, !File.exist?(@path))
+        end
+      )
       env = Sablon::Environment.new(self, context)
       env.section_properties = properties
       #
