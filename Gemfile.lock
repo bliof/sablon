@@ -8,14 +8,15 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.20.0)
-    nokogiri (1.18.8-arm64-darwin)
+    minitest (5.25.5)
+    mutex_m (0.3.0)
+    nokogiri (1.18.9-arm64-darwin)
       racc (~> 1.4)
-    ostruct (0.6.0)
-    racc (1.8.0)
-    rake (13.1.0)
-    rexml (3.2.6)
-    rubyzip (2.3.2)
+    ostruct (0.6.3)
+    racc (1.8.1)
+    rake (13.3.0)
+    rexml (3.4.1)
+    rubyzip (3.0.1)
     xml-simple (1.1.9)
       rexml
 
@@ -25,6 +26,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (>= 1.6)
   minitest (~> 5.4)
+  mutex_m
   ostruct
   rake (~> 13.0)
   sablon!

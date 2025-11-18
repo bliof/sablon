@@ -35,14 +35,20 @@ class NodePropertiesTest < Sablon::TestCase
   def test_node_property_with_hash_value_converison
     props = { 'shd' => { color: 'clear', fill: '123456', test: nil } }
     props = Sablon::HTMLConverter::NodeProperties.new('w:rPr', props, @inc_props.new)
-    assert_equal props.inspect, 'shd={:color=>"clear", :fill=>"123456", :test=>nil}'
+    assert_includes [
+      'shd={:color=>"clear", :fill=>"123456", :test=>nil}',
+      'shd={color: "clear", fill: "123456", test: nil}'
+    ], props.inspect
     assert_equal props.to_docx, '<w:rPr><w:shd w:color="clear" w:fill="123456" /></w:rPr>'
   end
 
   def test_node_property_with_array_value_converison
     props = { 'numPr' => [{ 'ilvl' => 1 }, { 'numId' => 34 }] }
     props = Sablon::HTMLConverter::NodeProperties.new('w:pPr', props, @inc_props.new)
-    assert_equal props.inspect, 'numPr=[{"ilvl"=>1}, {"numId"=>34}]'
+    assert_includes [
+      'numPr=[{"ilvl"=>1}, {"numId"=>34}]',
+      'numPr=[{"ilvl" => 1}, {"numId" => 34}]'
+    ], props.inspect
     assert_equal props.to_docx, '<w:pPr><w:numPr><w:ilvl w:val="1" /><w:numId w:val="34" /></w:numPr></w:pPr>'
   end
 

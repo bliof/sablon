@@ -252,7 +252,10 @@ class ContentImageTest < Sablon::TestCase
     #
     # set some rid's and retest
     @expected.rid_by_file['word/test.xml'] = 'rId1'
-    assert_equal '#<Image r2d2.jpg:{"word/test.xml"=>"rId1"}>', @expected.inspect
+    assert_includes [
+      '#<Image r2d2.jpg:{"word/test.xml"=>"rId1"}>',
+      '#<Image r2d2.jpg:{"word/test.xml" => "rId1"}>'
+    ], @expected.inspect
   end
 
   def test_wraps_image_from_string_path
